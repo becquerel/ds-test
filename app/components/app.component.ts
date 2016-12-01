@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from '../services/user.service';
+import {User} from "../models/user.model";
 
 @Component({
   selector: 'direct-services-users',
@@ -15,7 +17,7 @@ import { Component } from '@angular/core';
                     <user-search></user-search>
                 </div>
                 <div>
-                    <user-list></user-list>
+                    <user-list [users]="users"></user-list>
                 </div>    
             </div>
             
@@ -26,6 +28,17 @@ import { Component } from '@angular/core';
         
         
   `,
+  providers: [UserService]
 })
 
-export class AppComponent  { name = 'Direct-Services Users'; }
+export class AppComponent implements OnInit {
+
+  private users: User[];
+
+  constructor(private _userService: UserService) {}
+
+  ngOnInit(){
+    this._userService.getUsers().subscribe(users => this.users = users);
+  }
+
+}
