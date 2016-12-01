@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from "@angular/core";
-import {User} from "../models/user.model";
+import {Client} from "../models/client.model";
 
 @Pipe({
     name: 'searchClient'
@@ -12,13 +12,13 @@ export class ClientSearchPipe implements PipeTransform {
      * @param searchString
      * @returns {any}
      */
-    transform(clients: User[], searchText: string) {
+    transform(clients: Client[], searchText: string) {
         // no filter, return all clients right away
         if (searchText === '') {
             return clients;
         }
 
-        let filteredClients: User[] = [];
+        let filteredClients: Client[] = [];
         if (searchText !== '' && clients) {
             clients.forEach(client => {
                 if (this.matchClient(client, searchText)) {
@@ -30,7 +30,7 @@ export class ClientSearchPipe implements PipeTransform {
         return filteredClients;
     }
 
-    matchClient(client: User, searchText: string): boolean {
+    matchClient(client: Client, searchText: string): boolean {
 
         return true;
     }
