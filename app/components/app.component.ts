@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
         console.log(this.searchText);
     }
 
-    search(searchText) {
+    search(searchText: string) {
         this.searchText = searchText;
     }
 
