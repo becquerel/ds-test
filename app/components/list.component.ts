@@ -9,7 +9,7 @@ import {Client} from '../models/client.model';
                 [class.active]="isSelectedClient(client)">
 
                 <a href="#client-detail" (click)="clientSelected.emit(client)">
-                    <span class="pull-right">
+                    <span class="pull-left">
                         <img class="avatar img-rounded" [src]="client.general.avatar" />
                     </span>  
                     <div><strong>{{ client.general.firstName }} {{ client.general.lastName }}</strong></div>
@@ -22,6 +22,7 @@ import {Client} from '../models/client.model';
         .avatar {
             width: 40px;
             height: 40px;
+            margin-right: 15px;
         }
         
         a {
