@@ -6,14 +6,15 @@ import {Client} from '../models/client.model';
     template: `
         <ul class="list-group">
             <li class="list-group-item" *ngFor="let client of clients | searchClient:searchText" 
-                (click)="clientSelected.emit(client)" 
                 [class.active]="isSelectedClient(client)">
-                
-                <span class="pull-right">
-                    <img class="avatar img-rounded" [src]="client.general.avatar" />
-                </span>  
-                <div><strong>{{ client.general.firstName }} {{ client.general.lastName }}</strong></div>
-                <div>{{ client.job.title }}</div>
+
+                <a href="#" (click)="clientSelected.emit(client)">
+                    <span class="pull-right">
+                        <img class="avatar img-rounded" [src]="client.general.avatar" />
+                    </span>  
+                    <div><strong>{{ client.general.firstName }} {{ client.general.lastName }}</strong></div>
+                    <div>{{ client.job.title }}</div>
+                </a>
             </li>
         </ul>
     `,
@@ -21,6 +22,15 @@ import {Client} from '../models/client.model';
         .avatar {
             width: 40px;
             height: 40px;
+        }
+        
+        a {
+            color: black;
+            text-decoration: none;
+        }
+        
+        li:hover {
+            background-color: #eeeeee;
         }
     `]
 })
