@@ -1,52 +1,51 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../services/user.service';
-import {User} from "../models/user.model";
+import {ClientService} from '../services/client.service';
+import {Client} from "../models/client.model";
 
 @Component({
-    selector: 'direct-services-users',
+    selector: 'direct-services-clients',
     template: `
         <div class="row">
             <div class="col-xs-12">
-                <h1>Direct-Services Users</h1>    
+                <h1>Direct-Services Clients</h1>    
             </div>
         </div>
         
         <div class="row">
             <div class="col-sm-4">
                 <div>
-                    <user-search [searchText]="searchText" (searchChanged)="search($event)"></user-search>
+                    <client-search [searchText]="searchText" (searchChanged)="search($event)"></client-search>
                 </div>
                 <div>
-                    <user-list [users]="users" [activeUser]="activeUser" [searchText]="searchText" (userSelected)="selectUser($event)"></user-list>
+                    <client-list [clients]="clients" [activeClient]="activeClient" [searchText]="searchText" (clientSelected)="selectClient($event)"></client-list>
                 </div>    
             </div>
             
             <div class="col-sm-8">
-                <user-detail [user]="activeUser"></user-detail>
+                <client-detail [client]="activeClient"></client-detail>
             </div>
         </div>
         
         
   `,
-    providers: [UserService]
+    providers: [ClientService]
 })
 
 export class AppComponent implements OnInit {
 
-    private users: User[];
-    private activeUser: User = null;
+    private clients: Client[];
+    private activeClient: Client = null;
     private searchText: string = '';
 
-    constructor(private _userService: UserService) {
+    constructor(private _clientService: ClientService) {
     }
 
     ngOnInit() {
-        this._userService.getUsers().subscribe(users => this.users = users);
+        this._clientService.getClients().subscribe(clients => this.clients = clients);
     }
 
-    selectUser(user: User) {
-        this.activeUser = user;
-        console.log(this.searchText);
+    selectClient(client: Client) {
+        this.activeClient = client;
     }
 
     search(searchText: string) {

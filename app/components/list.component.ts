@@ -1,31 +1,38 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {User} from '../models/user.model';
+import {Client} from '../models/client.model';
 
 @Component({
-    selector: 'user-list',
+    selector: 'client-list',
     template: `
         <ul class="list-group">
-            <li class="list-group-item" *ngFor="let user of users | searchClient:searchText" (click)="userSelected.emit(user)" [class.active]="isSelectedUser(user)">
+            <li class="list-group-item" *ngFor="let client of clients | searchClient:searchText" 
+                (click)="clientSelected.emit(client)" 
+                [class.active]="isSelectedClient(client)">
+                
                 <span class="pull-right">
-                    <img [src]="user.general.avatar" width="30" height="30" />
+                    <img class="avatar img-rounded" [src]="client.general.avatar" />
                 </span>  
-                <div><strong>{{ user.general.firstName }} {{ user.general.lastName }}</strong></div>
-                <div>{{ user.job.title }}</div>
+                <div><strong>{{ client.general.firstName }} {{ client.general.lastName }}</strong></div>
+                <div>{{ client.job.title }}</div>
             </li>
         </ul>
-    `
+    `,
+    styles: [`
+        .avatar {
+            width: 40px;
+            height: 40px;
+        }
+    `]
 })
 
 export class ListComponent {
-    @Input() users: User[];
-    @Input() activeUser: User;
+    @Input() clients: Client[];
+    @Input() activeClient: Client;
     @Input() searchText: string;
-    @Output() userSelected: EventEmitter<any> = new EventEmitter();
+    @Output() clientSelected: EventEmitter<any> = new EventEmitter();
 
-    selectedUser: User = null;
-
-    isSelectedUser(user: User) {
-        return this.activeUser === user;
+    isSelectedClient(client: Client) {
+        return this.activeClient === client;
     }
 
 }

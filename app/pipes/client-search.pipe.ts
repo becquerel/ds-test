@@ -12,22 +12,27 @@ export class ClientSearchPipe implements PipeTransform {
      * @param searchString
      * @returns {any}
      */
-    transform(clients: User[], searchString: string){
+    transform(clients: User[], searchText: string) {
         // no filter, return all clients right away
-        if (searchString === '') {
+        if (searchText === '') {
             return clients;
         }
 
         let filteredClients: User[] = [];
-        if (searchString !== '' && clients) {
+        if (searchText !== '' && clients) {
             clients.forEach(client => {
-                if (client.general.firstName == searchString) {
+                if (this.matchClient(client, searchText)) {
                     filteredClients.push(client);
                 }
             });
         }
 
         return filteredClients;
+    }
+
+    matchClient(client: User, searchText: string): boolean {
+
+        return true;
     }
 }
 

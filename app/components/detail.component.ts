@@ -1,32 +1,32 @@
 import {Component, Input} from '@angular/core';
-import {User} from '../models/user.model';
+import {Client} from '../models/client.model';
 
 @Component({
-    selector: 'user-detail',
+    selector: 'client-detail',
     template: `
-        <div class="media" *ngIf="user !== null">
+        <div class="media" *ngIf="client !== null">
             <div class="media-left">
-                <img [src]="user.general.avatar" class="media-object avatar img-rounded" >
+                <img [src]="client.general.avatar" class="media-object avatar img-rounded" >
             </div>
             <div class="media-body">
-                <h2 class="media-heading">{{ user.general.firstName }} {{ user.general.lastName }}</h2>
-                <h3>{{ user.job.title}} - {{ user.job.company }}</h3>
+                <h2 class="media-heading">{{ client.general.firstName }} {{ client.general.lastName }}</h2>
+                <h3>{{ client.job.title}} - {{ client.job.company }}</h3>
                 
                 <div class="panel panel-default">
                     <div class="panel-heading">Contact Information</div>
                     <div class="panel-body">
                         <p>
                             <i class="fa fa-phone"></i>
-                            {{ user.contact.phone}}
+                            {{ client.contact.phone}}
                         </p>
                         <p>
                             <i class="fa fa-envelope"></i>
-                            {{ user.contact.email}}
+                            {{ client.contact.email}}
                         </p>
-                        <p>{{ user.address.street }}</p>
-                        <p>{{ user.address.zipCode }} {{ user.address.City }}</p>
+                        <p>{{ client.address.street }}</p>
+                        <p>{{ client.address.zipCode }} {{ client.address.City }}</p>
                         <p class="country">
-                          {{ user.address.country }}
+                          {{ client.address.country }}
                         </p>
                     </div>
                 </div>
@@ -34,8 +34,8 @@ import {User} from '../models/user.model';
             
         </div>
         
-        <div *ngIf="user === null">
-            Please select User
+        <div *ngIf="client === null">
+            Please select Client from the list
         </div>
     `,
     styles: [`
@@ -50,5 +50,5 @@ import {User} from '../models/user.model';
 })
 
 export class DetailComponent {
-    @Input() user: User;
+    @Input() client: Client;
 }

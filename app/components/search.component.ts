@@ -1,7 +1,7 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
-    selector: 'user-search',
+    selector: 'client-search',
     template: `<input [(ngModel)]="searchText" type="text" (keyup)="search()" />`
 })
 

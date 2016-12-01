@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/Rx';
-import {User} from '../models/user.model';
+import {Client} from '../models/client.model';
 
 
 @Injectable()
-export class UserService {
+export class ClientService {
     private _apiEndpoint = 'http://localhost:3000/clients.json';
 
     /**
@@ -20,8 +20,8 @@ export class UserService {
      * filter value to the API, so the backend endpoint would return already filtered values
      * @returns {Observable<R>}
      */
-    getUsers() {
+    getClients() {
         return this._http.get(this._apiEndpoint)
-            .map(response => <User[]> response.json());
+            .map(response => <Client[]> response.json());
     }
 }
