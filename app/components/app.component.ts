@@ -14,7 +14,7 @@ import {User} from "../models/user.model";
         <div class="row">
             <div class="col-sm-4">
                 <div>
-                    <user-search></user-search>
+                    <user-search [searchText]="searchText" (searchChanged)="search($event)"></user-search>
                 </div>
                 <div>
                     <user-list [users]="users" [activeUser]="activeUser" (userSelected)="selectUser($event)"></user-list>
@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
 
     private users: User[];
     private activeUser: User = null;
+    private searchText: string = '';
 
     constructor(private _userService: UserService) {
     }
@@ -45,6 +46,11 @@ export class AppComponent implements OnInit {
 
     selectUser(user: User) {
         this.activeUser = user;
+        console.log(this.searchText);
+    }
+
+    search(searchText) {
+        this.searchText = searchText;
     }
 
 }

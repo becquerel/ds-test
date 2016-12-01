@@ -1,10 +1,15 @@
-import {Component, Input, Output} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'user-search',
-    template: `Search box here`
+    template: `<input [(ngModel)]="searchText" type="text" (keyup)="search()" />`
 })
 
 export class SearchComponent {
+    @Input() searchText: string;
+    @Output() searchChanged: EventEmitter<any> = new EventEmitter();
 
+    search() {
+        this.searchChanged.emit(this.searchText);
+    }
 }
