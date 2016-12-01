@@ -17,7 +17,7 @@ import {User} from "../models/user.model";
                     <user-search [searchText]="searchText" (searchChanged)="search($event)"></user-search>
                 </div>
                 <div>
-                    <user-list [users]="users" [activeUser]="activeUser" (userSelected)="selectUser($event)"></user-list>
+                    <user-list [users]="users" [activeUser]="activeUser" [searchText]="searchText" (userSelected)="selectUser($event)"></user-list>
                 </div>    
             </div>
             

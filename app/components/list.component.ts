@@ -5,7 +5,7 @@ import {User} from '../models/user.model';
     selector: 'user-list',
     template: `
         <ul class="list-group">
-            <li class="list-group-item" *ngFor="let user of users" (click)="userSelected.emit(user)" [class.active]="isSelectedUser(user)">
+            <li class="list-group-item" *ngFor="let user of users | searchClient:searchText" (click)="userSelected.emit(user)" [class.active]="isSelectedUser(user)">
                 <span class="pull-right">
                     <img [src]="user.general.avatar" width="30" height="30" />
                 </span>  
@@ -19,6 +19,7 @@ import {User} from '../models/user.model';
 export class ListComponent {
     @Input() users: User[];
     @Input() activeUser: User;
+    @Input() searchText: string;
     @Output() userSelected: EventEmitter<any> = new EventEmitter();
 
     selectedUser: User = null;
