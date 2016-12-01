@@ -24,7 +24,7 @@ import {Client} from '../models/client.model';
                             {{ client.contact.email}}
                         </p>
                         <p>{{ client.address.street }}</p>
-                        <p>{{ client.address.zipCode }} {{ client.address.City }}</p>
+                        <p>{{ client.address.zipCode }} {{ client.address.city }}</p>
                         <p class="country">
                           {{ client.address.country }}
                         </p>
