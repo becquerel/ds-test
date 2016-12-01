@@ -4,7 +4,7 @@ import {Client} from '../models/client.model';
 @Component({
     selector: 'client-detail',
     template: `
-        <div class="media" *ngIf="client !== null">
+        <div class="media client-detail" *ngIf="client !== null">
             <div class="media-left">
                 <img [src]="client.general.avatar" class="media-object avatar img-rounded" >
             </div>
@@ -34,7 +34,7 @@ import {Client} from '../models/client.model';
             
         </div>
         
-        <div *ngIf="client === null">
+        <div *ngIf="client === null" class="client-detail">
             Please select Client from the list
         </div>
     `,
@@ -45,6 +45,9 @@ import {Client} from '../models/client.model';
         }
         .country {
             font-weight: bold;
+        }
+        .client-detail {
+            padding-top: 15px;
         }
     `]
 })
