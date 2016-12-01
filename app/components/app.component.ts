@@ -6,12 +6,6 @@ import {Client} from "../models/client.model";
     selector: 'direct-services-clients',
     template: `
         <div class="row">
-            <div class="col-xs-12">
-                <h1>Direct-Services Clients</h1>    
-            </div>
-        </div>
-        
-        <div class="row">
             <div class="col-sm-4">
                 <div>
                     <client-search [searchText]="searchText" (searchChanged)="search($event)"></client-search>
@@ -21,6 +15,7 @@ import {Client} from "../models/client.model";
                 </div>    
             </div>
             
+            <a id="client-detail"></a>
             <div class="col-sm-8">
                 <client-detail [client]="activeClient"></client-detail>
             </div>

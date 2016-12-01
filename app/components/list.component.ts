@@ -8,7 +8,7 @@ import {Client} from '../models/client.model';
             <li class="list-group-item" *ngFor="let client of clients | searchClient:searchText" 
                 [class.active]="isSelectedClient(client)">
 
-                <a href="#" (click)="clientSelected.emit(client)">
+                <a href="#client-detail" (click)="clientSelected.emit(client)">
                     <span class="pull-right">
                         <img class="avatar img-rounded" [src]="client.general.avatar" />
                     </span>  
