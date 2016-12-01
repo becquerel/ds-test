@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/Rx';
 import {Client} from '../models/client.model';
@@ -12,7 +12,8 @@ export class ClientService {
      *
      * @param _http
      */
-    constructor(private _http: Http) {}
+    constructor(private _http: Http) {
+    }
 
     /**
      * loads all users from the API endpoint

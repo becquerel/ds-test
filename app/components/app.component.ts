@@ -11,7 +11,11 @@ import {Client} from '../models/client.model';
                     <client-search [searchText]="searchText" (searchChanged)="search($event)"></client-search>
                 </div>
                 <div>
-                    <client-list [clients]="clients" [activeClient]="activeClient" [searchText]="searchText" (clientSelected)="selectClient($event)"></client-list>
+                    <client-list 
+                        [clients]="clients" 
+                        [activeClient]="activeClient" 
+                        [searchText]="searchText" 
+                        (clientSelected)="selectClient($event)"></client-list>
                 </div>    
             </div>
             

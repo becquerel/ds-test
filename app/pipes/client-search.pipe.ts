@@ -1,5 +1,5 @@
-import {Pipe, PipeTransform} from "@angular/core";
-import {Client} from "../models/client.model";
+import {Pipe, PipeTransform} from '@angular/core';
+import {Client} from '../models/client.model';
 
 @Pipe({
     name: 'searchClient'
@@ -52,7 +52,7 @@ export class ClientSearchPipe implements PipeTransform {
      * @returns {boolean}
      */
     matchObject(object: any, searchRegex: RegExp): boolean {
-        let match:boolean = false;
+        let match: boolean = false;
 
         for (let property in object) {
             let fieldValue = object[property];
