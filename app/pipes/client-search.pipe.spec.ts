@@ -1,4 +1,5 @@
-import {ClientSearchPipe} from "./client-search.pipe";
+import {ClientSearchPipe} from './client-search.pipe';
+import {Client} from '../models/client.model';
 
 let client1 = {
     "general": {
@@ -71,7 +72,7 @@ let clientsData = [client1, client2, client3];
 // very simple function to sort an array, so we can check equality of differently sorted arrays
 // clients in our dataset do not have unique ID, but avatar can be considered reasonably unique value
 // for our use case
-let clientArraySort = function(client1, client2) {
+let clientArraySort = function(client1: Client, client2: Client) {
     if (client1.general.avatar < client2.general.avatar) {
         return -1;
     } else if (client1.general.avatar > client2.general.avatar) {
