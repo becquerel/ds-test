@@ -84,7 +84,7 @@ let clientArraySort = function(client1: Client, client2: Client) {
 describe('ClientSearchPipe', () => {
     let pipe = new ClientSearchPipe();
 
-    it('searches for "Belarus" in the nested objects and count items', () => {
+    it('searches for "Belarus" in the nested objects and finds correct client', () => {
         let resultArray = pipe.transform(clientsData, 'Belarus');
         expect(resultArray.length).toBe(1); // there is one client from Belarus
         expect(resultArray[0]).toBe(client3);
@@ -92,7 +92,7 @@ describe('ClientSearchPipe', () => {
 
     it('does case-insensitive search ("mCKenZiE gROUp" will find "McKenzie Group")', () => {
         let resultArray = pipe.transform(clientsData, 'mCKenZiE gROUp');
-        expect(resultArray.length).toBe(1); // one client in the sample data woriking in McKenzie Group
+        expect(resultArray.length).toBe(1); // one client in the sample data working in McKenzie Group
         expect(resultArray[0]).toBe(client3);
     });
 
@@ -109,10 +109,11 @@ describe('ClientSearchPipe', () => {
         let resultArray = pipe.transform(clientsData, 'so');
         expect(resultArray.length).toBe(2); // check number of items in an array
         expect(resultArray).toEqual([client1, client2]);    // items in the right order
-        expect(resultArray.sort(clientArraySort)).toEqual([client2, client1].sort(clientArraySort));    // "wrong" order
+        expect(resultArray.sort(clientArraySort))
+            .toEqual([client2, client1].sort(clientArraySort));    // "wrong" order, but still correct data
     });
 
-    it('returns no clients on search that is definitely not there', () => {
+    it('returns no clients on search string that is definitely not there', () => {
         expect(pipe.transform(clientsData, 'DNBsjwiaosiud')).toEqual([]);
     });
 
