@@ -8,7 +8,7 @@ import {Client} from '../models/client.model';
         <div class="row">
             <div class="col-sm-4">
                 <div>
-                    <client-search [searchText]="searchText" (searchChanged)="search($event)"></client-search>
+                    <client-search [searchText]="searchText" (searchChanged)="searchText = $event"></client-search>
                 </div>
                 <div>
                     <client-list 
@@ -46,9 +46,4 @@ export class AppComponent implements OnInit {
     selectClient(client: Client) {
         this.activeClient = client;
     }
-
-    search(searchText: string) {
-        this.searchText = searchText;
-    }
-
 }
